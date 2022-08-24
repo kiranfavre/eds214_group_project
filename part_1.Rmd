@@ -49,10 +49,13 @@ large_subset <- large_df %>%
   select(Sample_ID, Sample_Date, NO3, K) %>% 
   rename(id = 1, date = 2, no3 = 3, k = 4) %>% 
   mutate(year = year(date)) %>% 
-  filter(year >= 1988 & year <= 1994)
+  mutate(month = month(date)) %>% 
+  filter(year >= 1988 & year <= 1994) %>% 
+  group_by(year, month, id) %>% 
+  summarise(mean = mean(k, na.rm=TRUE)) 
   
   
 
-ggplot(large_subset, aes(x = date, y = k)) + geom_line(aes(color = id))
+ggplot(large_subset, aes(x = year, y = mean)) + geom_line(aes(color = id))
 ```
 
