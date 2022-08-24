@@ -7,7 +7,7 @@ date: "2022-08-24"
 ```{r}
 library(here)
 library(tidyverse)
-
+library(lubridate)
 ```
 
 
@@ -21,7 +21,38 @@ BQ3 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca3
 PRM <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/RioMameyesPuenteRoto.csv", na = "-9999")
 
 
-## Combine into one dataframe
+bq2 <- BQ2 %>% 
+  mutate(Sample_Date = as.Date(mdy_hm(Sample_Date)))
+bq1 <- BQ1 %>% 
+  mutate(Sample_Date = mdy(Sample_Date))
+bq3 <- BQ3 %>% 
+  mutate(Sample_Date = mdy(Sample_Date))
+prm <- PRM %>% 
+  mutate(Sample_Date = mdy(Sample_Date))
 
+
+```
+
+## Fixing Q2 date column
+
+```{r}
+
+## Combine into one dataframe
+large_df <- rbind(bq1, bq2, bq3, prm)
+```
+
+
+
+```{r}
+
+large_subset <- large_df %>% 
+  select(Sample_ID, Sample_Date, NO3, K) %>% 
+  rename(id = 1, date = 2, no3 = 3, k = 4) %>% 
+  mutate(year = year(date)) %>% 
+  filter(year >= 1988 & year <= 1994)
+  
+  
+
+ggplot(large_subset, aes(x = date, y = k)) + geom_line(aes(color = id))
 ```
 
