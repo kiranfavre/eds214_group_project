@@ -1,0 +1,27 @@
+---
+title: "Project part 1"
+output: html_document
+date: "2022-08-24"
+---
+### Load Packages
+```{r}
+library(here)
+library(tidyverse)
+
+```
+
+
+### Read in Data
+```{r}
+
+## Data lives only on taylor server - need absolute file path to access
+BQ1 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca1-Bisley.csv", na = "-9999")
+BQ2 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca2-Bisley.csv", na = "-9999")
+BQ3 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca3-Bisley.csv", na = "-9999")
+PRM <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/RioMameyesPuenteRoto.csv", na = "-9999")
+
+
+## Combine into one dataframe
+
+```
+
