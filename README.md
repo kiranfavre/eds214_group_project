@@ -29,5 +29,8 @@ Any bugs detected in running this code can be submitted through Github pull requ
 
 Schaefer, D., McDowell, W., Scatena, F., & Asbury, C. (2000). Effects of hurricane disturbance on stream water concentrations and fluxes in eight tropical forest watersheds of the Luquillo Experimental Forest, Puerto Rico. Journal of Tropical Ecology, 16(2), 189-207. doi:10.1017/S0266467400001358
 
+Header picture: https://lternet.edu/site/luquillo-lter/
+Footer picture: https://www.science.org/content/article/killer-whales-form-killer-friendships-new-drone-footage-suggests
 
 
+![orcas](https://user-images.githubusercontent.com/110261671/186734672-82dd1c6c-5291-4a0b-8b5c-1909e19845e5.jpg)
