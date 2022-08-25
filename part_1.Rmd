@@ -15,12 +15,17 @@ library(lubridate)
 ```{r}
 
 ## Data lives only on taylor server - need absolute file path to access
+
+## reading in our data - NAs are stored as '-999'
 BQ1 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca1-Bisley.csv", na = "-9999")
 BQ2 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca2-Bisley.csv", na = "-9999")
 BQ3 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca3-Bisley.csv", na = "-9999")
 PRM <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/RioMameyesPuenteRoto.csv", na = "-9999")
 
 
+
+
+#fixing the date columns separately since formatting isnt consistent
 bq2 <- BQ2 %>% 
   mutate(Sample_Date = as.Date(mdy_hm(Sample_Date)))
 bq1 <- BQ1 %>% 
@@ -33,7 +38,7 @@ prm <- PRM %>%
 
 ```
 
-## Fixing Q2 date column
+
 
 ```{r}
 
@@ -44,24 +49,25 @@ large_df <- rbind(bq1, bq2, bq3, prm)
 
 
 ```{r}
+#subsetting to make our first plot
 
 large_subset <- large_df %>% 
-  select(Sample_ID, Sample_Date, NO3, K) %>% 
+  select(Sample_ID, Sample_Date, NO3, K) %>%          #selecting pertinent columns and renaming by index
   rename(id = 1, date = 2, no3 = 3, k = 4) %>% 
-  mutate(year = year(date)) %>% 
-  filter(year >= 1988 & year <= 1994) %>% 
-  mutate(month = month(date)) %>% 
-  mutate(my = floor_date(date, unit = "month")) %>% 
-  group_by(id, my) %>% 
-  summarise(mean_k = mean(k, na.rm = TRUE))
+  mutate(year = year(date)) %>%                       #extracting the year from the date column
+  filter(year >= 1988 & year <= 1994) %>%             #filtering for years of interest                  
+  mutate(my = floor_date(date, unit = "month")) %>%   #using floor_date to round each date to the nearest month
+  group_by(id, my) %>%                                #grouping each site by month
+  summarise(mean_k = mean(k, na.rm = TRUE))           #summarising to get the average K value per month
   
-  ## get mean k of each month
 
 ggplot(large_subset, aes(x = my, y = mean_k)) + 
   geom_line(aes(color = id)) + 
   theme(aspect.ratio = 1/3) + 
   labs(x = "Year", 
-       y = 'K (mg/l)')
+       y = 'K (mg/l)') 
+
+#+ facet_grid(no3 ~., scale = "free_y")
        
 ```
 
