@@ -1,4 +1,5 @@
-![luq-0004](https://user-images.githubusercontent.com/110261671/186728614-f0d70ac8-4ae9-4e13-8809-24c7f12944e0.jpg | 1280x650px)
+![this_one](https://user-images.githubusercontent.com/110261671/186730583-c907ab85-23a1-455d-a4f8-3e9ba06f5b55.jpg)
+
 # EDS214 Group Project
 ## Team Killer Whales: Jillian Allison, Andrew Bartnik, Kiran Favre, Michelle Lam, Dalila Lara
 
