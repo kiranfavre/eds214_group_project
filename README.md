@@ -8,6 +8,7 @@ This project is focused on developing collaborative workflow skills through two 
 To collaborate effectively, a Github repository was made and cloned to the Taylor Server at Bren. We used pair programming and worked together to find solutions to the answser the questions being asked. 
 
 ### Installation
+To succesfully repdroduce our project, access to the Taylor server at Bren is required. 
 
 ### Usage
 
