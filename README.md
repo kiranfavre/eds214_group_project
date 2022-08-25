@@ -12,11 +12,13 @@ To collaborate effectively, a Github repository was made and cloned to the Taylo
 
 ## Installation
 To succesfully repdroduce our project, access to the Taylor server at Bren is required. 
+The packages tidyverse, lubridate, and patchwork must be loaded before the code provided is used. 
 
 Access to the data used can be found on the Environmental Data Initiative site here: McDowell, W. 2022. Chemistry of stream water from the Luquillo Mountains ver 4923058. Environmental Data Initiative. https://doi.org/10.6073/pasta/1dd1a59a7e6fbe95fdf8736477d81b83
 
 
 ## Usage
+This project can be used in the future to monitor individual 
 
 ## Contribute 
 ### Fixing bugs
