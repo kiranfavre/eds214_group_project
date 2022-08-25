@@ -18,7 +18,7 @@ Access to the data used can be found on the Environmental Data Initiative site h
 
 
 ## Usage
-This project can be used in the future to monitor individual 
+This project can be used in the future to monitor individual nutrient concentrations in this area. 
 
 ## Contribute 
 ### Fixing bugs
