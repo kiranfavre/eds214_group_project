@@ -1,1 +1,1 @@
-# eds214_group_project
+# EDS214 Group Project - Team Killer Whales
