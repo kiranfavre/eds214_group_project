@@ -1,6 +1,5 @@
 # EDS214 Group Project
-## Team Killer Whales
-### Jillian Allison, Andrew Bartnik, Kiran Favre, Michelle Lam, Dalila Lara
+## Team Killer Whales ### Jillian Allison, Andrew Bartnik, Kiran Favre, Michelle Lam, Dalila Lara
 
 
 ### Introduction
