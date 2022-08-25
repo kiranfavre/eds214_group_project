@@ -34,4 +34,5 @@ Header picture: https://lternet.edu/site/luquillo-lter/
 Footer picture: https://www.science.org/content/article/killer-whales-form-killer-friendships-new-drone-footage-suggests
 
 
-![orcas](https://user-images.githubusercontent.com/110261671/186734672-82dd1c6c-5291-4a0b-8b5c-1909e19845e5.jpg)
+
+![killer_whales](https://user-images.githubusercontent.com/110261671/186735092-cad522f0-db98-47ae-9ba1-cf7014218d87.jpg)
