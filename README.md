@@ -17,7 +17,7 @@
 ## Introduction
 This project is focused on developing collaborative workflow skills through two exercises. The first goal was to create a concentration time series for the stream water chemistry data collected at four research sites at the Luquillo Experimental Forest. This data is collected by the Long Term Ecological Network and hosted by the Environmental Data Initiative. The data was read in, processed, and visualized on the Taylor server. The second goal was to ask and answer a question related to the data collected through the LTER. We decided to explore the relationship between rainfall and nutrient concentrations and total suspended solids. 
 
-To collaborate effectively, a Github repository was made and cloned to the Taylor Server at Bren. We used pair programming and worked together to find solutions to the answser the questions being asked. We also set up a Slack channel to share information. 
+To collaborate effectively, a Github repository was made and cloned to the Taylor Server at Bren. We used pair programming and worked together to find solutions to the answser the questions being asked by the partner that is coding. We also set up a Slack channel to share information. 
 
 
 ## Installation
