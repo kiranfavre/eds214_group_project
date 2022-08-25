@@ -20,8 +20,9 @@ Access to the data used can be found on the Environmental Data Initiative site h
 
 ## Contribute 
 ### Fixing bugs
-Any bu
-### Github/pull requests (?)
+Any bugs detected in running this code can be submitted through Github pull requests. To do so, navigate to the Github repository page, find the main task bar button labeled 'Issues', and submit the problem occurring. 
+
+
 
 
 ## Acknowledgements
