@@ -5,7 +5,9 @@
 
 
 ## Introduction
-This project is focused on developing collaborative workflow skills through two exercises. The first goal was to create a concentration time series for the stream water chemistry data collected at four research sites at the Luquillo Experimental Forest. The data was read in, processed, and visualized on the Taylor server. The second goal was to ask and answer a question related to the data. 
+This project is focused on developing collaborative workflow skills through two exercises. The first goal was to create a concentration time series for the stream water chemistry data collected at four research sites at the Luquillo Experimental Forest. This data is collected by the Long Term Ecological Network and hosted by the Environmental Data Initiative. The data was read in, processed, and visualized on the Taylor server. The second goal was to ask and answer a question related to the data. 
+
+To collaborate effectively, a Github repository was made and cloned to the Taylor Server at Bren. We used pair programming and worked together to find solutions to the answser the questions being asked. 
 
 
 ## Installation
@@ -13,12 +15,14 @@ To succesfully repdroduce our project, access to the Taylor server at Bren is re
 
 Access to the data used can be found on the Environmental Data Initiative site here: McDowell, W. 2022. Chemistry of stream water from the Luquillo Mountains ver 4923058. Environmental Data Initiative. https://doi.org/10.6073/pasta/1dd1a59a7e6fbe95fdf8736477d81b83
 
+
 ## Usage
 
 ## Contribute 
 ### Fixing bugs
+Any bu
 ### Github/pull requests (?)
-To collaborate effectively, a Github repository was made and cloned to the Taylor Server at Bren. We used pair programming and worked together to find solutions to the answser the questions being asked. 
+
 
 ## Acknowledgements
 
