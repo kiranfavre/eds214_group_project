@@ -1,0 +1,62 @@
+---
+title: "part_2"
+output: html_document
+date: "2022-08-25"
+---
+
+### Does rainfall influence nutrient concentrations and total suspended solids?
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(patchwork)
+library(GGally)
+
+```
+
+```{r}
+rain <- read_csv("/courses/EDS214/killer_whales/data/raw_data/rainfall/knb-lter-luq/rainfall_flux.csv", na = "-9999")
+BQ1 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca1-Bisley.csv", na = "-9999")
+```
+```{r}
+rainfall <- rain %>% 
+  select(Date, rammday) %>% 
+  rename(date = Date, r_day = rammday) %>% 
+  mutate(date = floor_date(mdy(date), unit = "months")) %>% 
+  filter(year(date) < 2003 & year(date) > 1989) %>% 
+  group_by(date) %>% 
+  summarise(mean_rain = mean(r_day, na.rm = TRUE))
+
+
+rain_chart <- ggplot(rainfall, aes(x = date, y = mean_rain)) + geom_line()
+```
+
+```{r}
+bq1 <- BQ1 %>% 
+  mutate(Sample_Date = mdy(Sample_Date))
+```
+
+
+```{r}
+bq1_fix <- bq1 %>% 
+    select(Sample_ID, Sample_Date, NO3, K,TSS) %>%          #selecting pertinent columns and renaming by index
+  rename(id = 1, date = 2, no3 = 3, k = 4, tss = 5) %>% 
+  mutate(year = year(date)) %>%                       
+  mutate(my = floor_date(date, unit = "month")) %>% 
+  filter(year(my) < 2003 & year(my) > 1989) %>% 
+  group_by(id, my) %>%
+  summarise(mean_k = mean(k, na.rm = TRUE), 
+            mean_no3 = mean(no3, na.rm = TRUE),
+            mean_tss = mean(tss, na.rm = TRUE))  
+```
+
+```{r}
+no3 <- ggplot(bq1_fix, aes(x = my, y = mean_no3)) + geom_line()
+tss <- ggplot(bq1_fix, aes(x = my, y = mean_tss)) + geom_line()
+k <- ggplot(bq1_fix, aes(x = my, y = mean_k)) + geom_line()
+
+
+final <- no3/rain_chart/tss/k
+
+```
+
