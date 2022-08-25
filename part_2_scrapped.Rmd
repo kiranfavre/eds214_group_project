@@ -1,0 +1,75 @@
+---
+title: "Project part 2"
+output: html_document
+date: "2022-08-25"
+---
+### Comparing stream chemistry across sites
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(patchwork)
+library(GGally)
+```
+
+```{r}
+icacos <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/RioIcacos.csv", na = "-9999")
+espiritu <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/RioEspirituSanto.csv", na = "-9999")
+rain <- read_csv("/courses/EDS214/killer_whales/data/raw_data/rainfall/knb-lter-luq/rainfall_flux.csv", na = "-9999")
+```
+```{r}
+rainfall <- rain %>% 
+  select(Date, rammday) %>% 
+  rename(date = Date, r_day = rammday) %>% 
+  mutate(date = floor_date(mdy(date), unit = "months")) %>% 
+  group_by(date) %>% 
+  summarise(mean_rain = mean(r_day, na.rm = TRUE))
+
+
+```
+
+```{r}
+#ie <- rbind(espiritu_date, icacos_date)
+```
+
+```{r}
+
+espiritu_date <- espiritu %>% 
+  select(Sample_Date, TSS, Temp, DOC, DON, Cond, Gage_Ht) %>% 
+  rename(date = 1, tss = 2, temp = 3, doc = 4, don = 5, cond = 6, gage = 7) %>% 
+  mutate(tss = as.numeric(tss),
+         temp = as.numeric(temp),
+         doc = as.numeric(doc),
+         don = as.numeric(don),
+         cond = as.numeric(cond),
+         gage = as.numeric(gage))
+
+
+
+
+
+clean <- espiritu_date %>% 
+  mutate(date = floor_date(date, unit = "months")) %>%
+  group_by(date) %>% 
+  summarise(mean_tss = mean(tss, na.rm = TRUE),
+            mean_temp = mean(temp, na.rm = TRUE),
+            mean_doc = mean(doc, na.rm = TRUE),
+            mean_don = mean(don, na.rm = TRUE),
+            mean_cond = mean(cond, na.rm = TRUE),
+            mean_gage = mean(gage, na.rm = TRUE))
+            
+
+
+
+solids <- ggplot(clean, aes(x = date, y = mean_tss)) + geom_line() 
+temperature <- ggplot(clean, aes(x = date, y = mean_temp)) + geom_line()
+org_car <- ggplot(clean, aes(x = date, y = mean_doc)) + geom_line()
+org_nit <- ggplot(clean, aes(x = date, y = mean_don)) + geom_line()
+conductivity <- ggplot(clean, aes(x = date, y = mean_cond)) + geom_line()
+gage_height <- ggplot(clean, aes(x = date, y = mean_gage)) + geom_line()
+
+patchwork <- (temperature/conductivity/gage_height/org_car/org_nit/solids)
+
+ggpairs()
+```
+
