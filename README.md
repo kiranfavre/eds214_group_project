@@ -3,6 +3,16 @@
 # EDS214 Group Project
 ## Team Killer Whales: Jillian Allison, Andrew Bartnik, Kiran Favre, Michelle Lam, Dalila Lara
 
+## Table of Contents
+[Introduction](https://github.com/kiranfavre/eds214_group_project/edit/main/README.md#installation)
+
+[Installation](https://github.com/kiranfavre/eds214_group_project/edit/main/README.md#installation) 
+
+[Usage](https://github.com/kiranfavre/eds214_group_project/edit/main/README.md#usage)
+
+[Contribute](https://github.com/kiranfavre/eds214_group_project/edit/main/README.md#contribute)
+
+[Acknowledgements](https://github.com/kiranfavre/eds214_group_project/edit/main/README.md#acknowledgements)
 
 ## Introduction
 This project is focused on developing collaborative workflow skills through two exercises. The first goal was to create a concentration time series for the stream water chemistry data collected at four research sites at the Luquillo Experimental Forest. This data is collected by the Long Term Ecological Network and hosted by the Environmental Data Initiative. The data was read in, processed, and visualized on the Taylor server. The second goal was to ask and answer a question related to the data collected through the LTER. We decided to explore the same nutrients as our first exercise, Nitrate and Potassium, across other sites.
