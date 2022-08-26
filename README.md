@@ -13,6 +13,8 @@
 
 [Contribute](https://github.com/kiranfavre/eds214_group_project#contribute)
 
+[Presentation](https://docs.google.com/presentation/d/1jWVciFshCha11gqFb0VNykt54vZ-2-kmTUrQVfJ7mNU/edit#slide=id.g1507b8896d4_0_31) 
+
 [Acknowledgements](https://github.com/kiranfavre/eds214_group_project#acknowledgements)
 
 ## Introduction
@@ -40,7 +42,8 @@ Contributions to this project can be made through pull requests [here.](https://
 ### Fixing bugs
 Any bugs detected in the code can be submitted through Github's 'issues' feature [here.](https://github.com/kiranfavre/eds214_group_project/issues)
 
-
+## Presentation
+Our slide deck that was presented to the MEDS cohort can be found [here](https://docs.google.com/presentation/d/1jWVciFshCha11gqFb0VNykt54vZ-2-kmTUrQVfJ7mNU/edit#slide=id.g1507b8896d4_0_31) 
 
 
 ## Acknowledgements
