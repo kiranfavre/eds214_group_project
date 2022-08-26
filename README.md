@@ -1,4 +1,5 @@
-![lqu_pic](https://user-images.githubusercontent.com/110261671/186731231-61cf93f8-1111-46cd-ae9a-b1dfe6ddbaa6.jpg)
+![luq-0001](https://user-images.githubusercontent.com/110261671/186951029-08d9d3b9-3f1f-4703-bb41-925f132c7c66.jpg)
+
 
 # Puerto Rico Stream Water Quality 
 ## Team Killer Whales 
