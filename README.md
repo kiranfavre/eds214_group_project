@@ -46,6 +46,8 @@ Any bugs detected in the code can be submitted through Github's 'issues' feature
 
 Authors: Jillian Allison, Andrew Bartnik, Kiran Favre, Michelle Lam, Dalila Lara
 
+Honorable mentions to Julien Brun and Casey O'Hara
+
 Schaefer, D., McDowell, W., Scatena, F., & Asbury, C. (2000). Effects of hurricane disturbance on stream water concentrations and fluxes in eight tropical forest watersheds of the Luquillo Experimental Forest, Puerto Rico. Journal of Tropical Ecology, 16(2), 189-207. doi:10.1017/S0266467400001358
 
 Header picture: https://lternet.edu/site/luquillo-lter/
