@@ -1,24 +1,37 @@
 ---
-title: "part_2"
+title: "Part 2"
 output: html_document
 date: "2022-08-25"
+execute:
+  message: false
+  warning: false
 ---
 
 ### Does rainfall influence nutrient concentrations and total suspended solids?
 
-```{r}
+### Load packages
+```{r message = FALSE}
 library(tidyverse)
 library(lubridate)
 library(patchwork)
 library(GGally)
+library(here)
 
 ```
 
-```{r}
+### Read in data
+
+```{r message = FALSE}
+
+## Path is only available to those with access to taylor
 rain <- read_csv("/courses/EDS214/killer_whales/data/raw_data/rainfall/knb-lter-luq/rainfall_flux.csv", na = "-9999")
 BQ1 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca1-Bisley.csv", na = "-9999")
 ```
+
+### Clean rainfall data and summarise variable of interest
 ```{r}
+
+##We want to find monthly average rainfall - select columns of interest and summarise to calculate averages by month
 rainfall <- rain %>% 
   select(Date, rammday) %>% 
   rename(date = Date, r_day = rammday) %>% 
@@ -28,16 +41,27 @@ rainfall <- rain %>%
   summarise(mean_rain = mean(r_day, na.rm = TRUE))
 
 
-rain_chart <- ggplot(rainfall, aes(x = date, y = mean_rain)) + geom_line()
+## Initial rainfall chart
+rain_chart <- ggplot(rainfall, aes(x = date, 
+                                   y = mean_rain)) + 
+  geom_line(color = "blue") + theme_minimal() + 
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks.x = element_blank()) + 
+  labs(y = "Rainfall (mm/month)") 
 ```
 
+### Convert our date column into a date object
 ```{r}
+## using lubridate 
 bq1 <- BQ1 %>% 
   mutate(Sample_Date = mdy(Sample_Date))
 ```
 
-
+### Clean and summarise bq1 site data
 ```{r}
+
+## round date column to nearest month, then summarise to find the mean for k, no3, and TSS
 bq1_fix <- bq1 %>% 
     select(Sample_ID, Sample_Date, NO3, K,TSS) %>%          #selecting pertinent columns and renaming by index
   rename(id = 1, date = 2, no3 = 3, k = 4, tss = 5) %>% 
@@ -49,14 +73,50 @@ bq1_fix <- bq1 %>%
             mean_no3 = mean(no3, na.rm = TRUE),
             mean_tss = mean(tss, na.rm = TRUE))  
 ```
-
+### Making plots of WQ indicators
 ```{r}
-no3 <- ggplot(bq1_fix, aes(x = my, y = mean_no3)) + geom_line()
-tss <- ggplot(bq1_fix, aes(x = my, y = mean_tss)) + geom_line()
-k <- ggplot(bq1_fix, aes(x = my, y = mean_k)) + geom_line()
+
+## plotting for NO3
+no3 <- ggplot(bq1_fix, 
+              aes(x = my, 
+                  y = mean_no3)) + 
+  geom_line(color = "green") + 
+  theme_minimal() + 
+  theme(panel.grid.minor.x = element_blank(), 
+        panel.grid.minor.y = element_blank()) + 
+  scale_x_date(position = "top") + 
+  labs(y = '[NO3] (μg/L)', 
+       x = "Year",
+       title = "Monthly averages for concentrations of various water quality indicators vs rainfall")
 
 
-final <- no3/rain_chart/tss/k
 
+## Plotting for TSS
+tss <- ggplot(bq1_fix, 
+              aes(x = my, 
+                  y = mean_tss)) + 
+  geom_line(color = "red") + theme_minimal() + 
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank()) + 
+  labs(y = "[TSS] (mg/L)")
+
+## Plotting for K
+k <- ggplot(bq1_fix, aes(x = my, y = mean_k)) + 
+  geom_line() + 
+  labs(x = "Year", 
+       y = "[K] (mg/L)") + 
+  theme_minimal() + 
+  theme(panel.grid.minor = element_blank())
+
+## Use patchwork to knit plots together, ggsave to directory
+final <- no3/rain_chart/tss/k 
+
+
+ggsave(here("figs", "figurefinal.jpg"), width = 10, height = 10)
+
+final
 ```
 
