@@ -35,8 +35,9 @@ Access to the data used in Part 2 can be found here: https://portal.edirepositor
 This project can be used in the future to monitor individual nutrient concentrations in this area. 
 
 ## Contribute 
+Contributions to this project can be made through pull requests [here.](https://github.com/kiranfavre/eds214_group_project/pulls)
 ### Fixing bugs
-Any bugs detected in running this code can be submitted through Github pull requests. To do so, navigate to the Github repository page, find the main task bar button labeled 'Issues', and submit the problem occurring. 
+Any bugs detected in running this code can be submitted through Github pull requests [here.](https://github.com/kiranfavre/eds214_group_project/issues)
 
 
 
