@@ -37,7 +37,7 @@ This project can be used in the future to monitor individual nutrient concentrat
 ## Contribute 
 Contributions to this project can be made through pull requests [here.](https://github.com/kiranfavre/eds214_group_project/pulls)
 ### Fixing bugs
-Any bugs detected in the code can be submitted through Github pull requests [here.](https://github.com/kiranfavre/eds214_group_project/issues)
+Any bugs detected in the code can be submitted through Github's 'issues' feature [here.](https://github.com/kiranfavre/eds214_group_project/issues)
 
 
 
