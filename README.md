@@ -1,7 +1,7 @@
 ![luq-0001](https://user-images.githubusercontent.com/110261671/186951644-4e89a4b6-a4f0-4a1d-ae5b-be9c8d85c6cc.jpg)
 
 
-# Puerto Rico Stream Water Quality Exploration
+# Exploring Stream Water Quality in Luquillo Mountains (Puerto Rico)
 ## Team Killer Whales 
 
 ## Table of Contents
