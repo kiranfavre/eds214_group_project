@@ -13,7 +13,7 @@
 
 [Contribute](https://github.com/kiranfavre/eds214_group_project#contribute)
 
-[Presentation](https://docs.google.com/presentation/d/1jWVciFshCha11gqFb0VNykt54vZ-2-kmTUrQVfJ7mNU/edit#slide=id.g1507b8896d4_0_31) 
+[Presentation](https://github.com/kiranfavre/eds214_group_project#presentation) 
 
 [Acknowledgements](https://github.com/kiranfavre/eds214_group_project#acknowledgements)
 
