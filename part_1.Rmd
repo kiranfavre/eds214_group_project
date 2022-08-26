@@ -1,10 +1,11 @@
 ---
-title: "Project part 1"
+title: "Project Part 1 - Luquillo Mountains Stream Chemistry"
 output: html_document
 date: "2022-08-24"
 ---
-### Load Packages
-```{r}
+### Load Packages: here, tidyverse, lubridate, patchwork
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 library(here)
 library(tidyverse)
 library(lubridate)
@@ -15,9 +16,10 @@ library(patchwork)
 ### Read in Data
 ```{r}
 
-## Data lives only on taylor server - need absolute file path to access
+## Data lives only on Taylor server - need absolute file path to access
 
-## reading in our data - NAs are stored as '-999'
+## Read in data
+## NAs are stored as '-9999'
 BQ1 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca1-Bisley.csv", na = "-9999")
 BQ2 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca2-Bisley.csv", na = "-9999")
 BQ3 <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/QuebradaCuenca3-Bisley.csv", na = "-9999")
@@ -25,8 +27,8 @@ PRM <- read_csv("/courses/EDS214/killer_whales/data/raw_data/csv/RioMameyesPuent
 
 
 
-
-#fixing the date columns separately since formatting isnt consistent
+## Clean Sample_Date column in each data frame so class is date and date formatted in ISO 8601
+## Store in cleaned data frames (e.g. bq1, bq2, bq3, prm)
 bq2 <- BQ2 %>% 
   mutate(Sample_Date = as.Date(mdy_hm(Sample_Date)))
 bq1 <- BQ1 %>% 
@@ -36,33 +38,35 @@ bq3 <- BQ3 %>%
 prm <- PRM %>% 
   mutate(Sample_Date = mdy(Sample_Date))
 
-
 ```
 
 
-
+### Combine Data frames
 ```{r}
-
-## Combine into one dataframe
 large_df <- rbind(bq1, bq2, bq3, prm)
 ```
 
 
-
+### Subset Data
 ```{r}
-#subsetting to make our first plot
-
 large_subset <- large_df %>% 
-  select(Sample_ID, Sample_Date, NO3, K) %>%          #selecting pertinent columns and renaming by index
-  rename(id = 1, date = 2, no3 = 3, k = 4) %>% 
-  mutate(year = year(date)) %>%                       
-  filter(year >= 1988 & year <= 1994) %>%                              
-  mutate(my = floor_date(date, unit = "month")) %>%   
-  group_by(id, my) %>%
+  select(id = Sample_ID, date = Sample_Date, no3 = NO3, k = K) %>%    #selecting pertinent columns and rename
+  
+  mutate(year = year(date)) %>%   #extract year from date and store in a new 'year' column  
+  
+  filter(year >= 1988 & year <= 1994) %>%  #filter for target years (1988-1994)
+  
+  mutate(my = floor_date(date, unit = "month")) %>%  #extract month and year from date column and store in 'my' column
+  
+  group_by(id, my) %>%  #group by site and month year and summarize by mean of potassium and nitrate
   summarise(mean_k = mean(k, na.rm = TRUE), 
             mean_no3 = mean(no3, na.rm = TRUE))           
-  
 
+       
+```
+
+### Create Plot for Potassium
+```{r}
 k_plot <- ggplot(large_subset, aes(x = my, y = mean_k)) + 
   geom_line(aes(color = id)) + 
   theme(aspect.ratio = 1/3,
@@ -72,14 +76,12 @@ k_plot <- ggplot(large_subset, aes(x = my, y = mean_k)) +
   labs(x = "Year", 
        y = 'K (mg/l)') + scale_x_date(position = "top") + 
   geom_vline(xintercept = as.numeric(large_subset$my[5]) , linetype = "dotdash") 
-       
 ```
 
-### Plotting for nitrate
 
+
+### Create Plot for Nitrate
 ```{r}
-  
-
 no3_plot <- ggplot(large_subset, aes(x = my, y = mean_no3)) + 
   geom_line(aes(color = id), show.legend = FALSE) + 
   theme(aspect.ratio = 1/3) + 
@@ -94,8 +96,7 @@ no3_plot <- ggplot(large_subset, aes(x = my, y = mean_no3)) +
 ```
 
 
-###Combining the plots
-
+### Combine Potassium and Nitrate Plots
 ```{r}
 big_plot <- (k_plot/no3_plot)
 big_plot
