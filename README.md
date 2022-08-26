@@ -1,4 +1,4 @@
-![luq-0001](https://user-images.githubusercontent.com/110261671/186951029-08d9d3b9-3f1f-4703-bb41-925f132c7c66.jpg)
+![luq-0001](https://user-images.githubusercontent.com/110261671/186951644-4e89a4b6-a4f0-4a1d-ae5b-be9c8d85c6cc.jpg)
 
 
 # Puerto Rico Stream Water Quality 
